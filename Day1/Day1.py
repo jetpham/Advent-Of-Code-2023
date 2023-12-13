@@ -1,6 +1,6 @@
 from typing import List
 
-with open("Day1Input.txt", "r") as file:
+with open("input.txt", "r") as file:
     input = file.readlines()
 
 def trebuchet(noisyValues: List[str]) -> int:
