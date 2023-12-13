@@ -1,15 +1,16 @@
+from typing import List
+import os
+
 MAX_RED = 12
 MAX_GREEN = 13
 MAX_BLUE = 14
-
-from typing import List
-import os
 
 current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, "input.txt")
 
 with open(file_path, "r") as file:
     input = file.readlines()
+
 
 def Conundrum(games: List[str]) -> int:
     sumOfPowers = 0
@@ -18,7 +19,6 @@ def Conundrum(games: List[str]) -> int:
         leastBlue = None
         leastGreen = None
         parts = game.split(":")
-        gameID = int(parts[0][5:])
         rounds = parts[1].split(";")
         for round in rounds:
             for cubes in round.split(","):
@@ -43,8 +43,8 @@ def Conundrum(games: List[str]) -> int:
                             leastBlue = int(values[1])
         if leastBlue is not None and leastGreen is not None and leastRed is not None:
             sumOfPowers += leastBlue * leastGreen * leastRed
-        
+
     return sumOfPowers
 
-    
+
 print(Conundrum(input))

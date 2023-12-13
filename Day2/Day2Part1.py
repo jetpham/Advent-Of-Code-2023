@@ -1,9 +1,9 @@
+from typing import List
+import os
+
 MAX_RED = 12
 MAX_GREEN = 13
 MAX_BLUE = 14
-
-from typing import List
-import os
 
 current_dir = os.path.dirname(__file__)
 file_path = os.path.join(current_dir, "input.txt")
@@ -11,8 +11,10 @@ file_path = os.path.join(current_dir, "input.txt")
 with open(file_path, "r") as file:
     input = file.readlines()
 
+
 class ContinueLoop(Exception):
     pass
+
 
 def Conundrum(games: List[str]) -> int:
     sumOfIDS = 0
@@ -38,5 +40,5 @@ def Conundrum(games: List[str]) -> int:
             continue
     return sumOfIDS
 
-    
+
 print(Conundrum(input))

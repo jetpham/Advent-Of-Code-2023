@@ -3,6 +3,7 @@ from typing import List
 with open("input.txt", "r") as file:
     input = file.readlines()
 
+
 def trebuchet(noisyValues: List[str]) -> int:
     total = 0
     valid = {
@@ -23,7 +24,7 @@ def trebuchet(noisyValues: List[str]) -> int:
         "6": 6,
         "7": 7,
         "8": 8,
-        "9": 9
+        "9": 9,
     }
     for string in noisyValues:
         values = []
@@ -38,5 +39,6 @@ def trebuchet(noisyValues: List[str]) -> int:
                 i += 1
         total += values[0] * 10 + values[-1]
     return total
+
 
 print(trebuchet(input))
