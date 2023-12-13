@@ -3,8 +3,12 @@ MAX_GREEN = 13
 MAX_BLUE = 14
 
 from typing import List
+import os
 
-with open("C:\\Users\\Jet Pham\\Advent-Of-Code-2023\\Day2\\input.txt", "r") as file:
+current_dir = os.path.dirname(__file__)
+file_path = os.path.join(current_dir, "input.txt")
+
+with open(file_path, "r") as file:
     input = file.readlines()
 
 def Conundrum(games: List[str]) -> int:
