@@ -26,7 +26,6 @@ def trebuchet(noisyValues: List[str]) -> int:
         "9": 9
     }
     for string in noisyValues:
-        print(f"Processing string: {string}")
         values = []
         i = 0
         while i < len(string):
@@ -37,9 +36,7 @@ def trebuchet(noisyValues: List[str]) -> int:
                     break
             else:
                 i += 1
-        print(f"Values extracted from string: {values}")
         total += values[0] * 10 + values[-1]
-    print(f"Total sum: {total}")
     return total
 
 print(trebuchet(input))
