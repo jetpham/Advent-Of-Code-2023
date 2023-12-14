@@ -2,7 +2,7 @@ import os
 import http.cookiejar
 import urllib
 import urllib.request
-
+import datetime
 # Your session cookie
 cookie = "53616c7465645f5febe3d984cce84e291be670a3f3c1066580dd0c8dc54b31925931a4d0b54a8be146534d52c9863ee26a428a05e9a3ca4555e28353863c51d4"
 
@@ -49,6 +49,10 @@ print(max_day)
 # Set the range to start from the largest number + 1
 start_day = max_day + 1
 
+current_date = datetime.datetime.now().date()
+current_day = current_date.day
+
+if current_day >= start_day:
 for day in range(start_day, start_day + 1):
     dir_name = f"Day{day}"
     os.makedirs(dir_name, exist_ok=True)
