@@ -70,12 +70,6 @@ def Day3(input: List[str]) -> int:
                 else:
                     goodNumber = goodNumber or hasSymbolNeighbor(rowIndex, columnIndex)
             elif currentNumberStartingIndex is not None:
-                print(
-                    input[rowIndex][currentNumberStartingIndex:columnIndex]
-                    + " is a "
-                    + ("good" if goodNumber else "bad")
-                    + " number"
-                )
                 if goodNumber:
                     total += int(
                         input[rowIndex][currentNumberStartingIndex:columnIndex]
