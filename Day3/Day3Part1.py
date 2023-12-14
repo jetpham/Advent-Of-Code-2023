@@ -40,7 +40,7 @@ def isSymbol(row: int, column: int) -> bool:
         and row < len(inputFile)
         and column >= 0
         and column < len(inputFile[row])
-        and inputFile[row][column] in ["*", "#", "$", "+", "&", "@"]
+        and not (inputFile[row][column].isdigit() or inputFile[row][column] == ".")
     )
 
 
@@ -54,20 +54,37 @@ def hasSymbolNeighbor(row: int, column: int) -> bool:
         or isSymbol(row + 1, column - 1)
         or isSymbol(row + 1, column)
         or isSymbol(row + 1, column + 1)
-        or isSymbol(row, column)
     )
 
-result = [
-    [hasSymbolNeighbor(i, j) for j in range(len(inputFile[i]))]
-    for i in range(len(inputFile))
-]
 
-# def Day3(input: List[str]) -> int:
-#     total = 0
-#     for rowIndex, row in enumerate(input):
-#         for columnIndex, char in enumerate(row):
+def Day3(input: List[str]) -> int:
+    total = 0
+    for rowIndex, row in enumerate(input):
+        goodNumber = None
+        currentNumberStartingIndex = None
+        for columnIndex, char in enumerate(row):
+            if char.isdigit():
+                if currentNumberStartingIndex is None:
+                    currentNumberStartingIndex = columnIndex
+                    goodNumber = hasSymbolNeighbor(rowIndex, columnIndex)
+                else:
+                    goodNumber = goodNumber or hasSymbolNeighbor(rowIndex, columnIndex)
+            elif currentNumberStartingIndex is not None:
+                print(
+                    input[rowIndex][currentNumberStartingIndex:columnIndex]
+                    + " is a "
+                    + ("good" if goodNumber else "bad")
+                    + " number"
+                )
+                if goodNumber:
+                    total += int(
+                        input[rowIndex][currentNumberStartingIndex:columnIndex]
+                    )
+                goodNumber = None
+                currentNumberStartingIndex = None
+    return total
 
-#     return total
 
-
-# print(Day3(inputFile))
+answer = Day3(inputFile)
+print("answer is: " + str(answer))
+print("Changed" if answer != 537710 else "Not Changed")
